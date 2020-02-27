@@ -3,7 +3,8 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import Seller from '../lib/user/sellermodel'
-// import Dog from '../lib/dogdata/dogmodel'
+import Dog from '../lib/dogData/dogmodel'
+import data from '../lib/dogData/data'
 // import Shopper from '../lib/user/shoppermodel'
 import bcrypt from 'bcrypt-nodejs'
 import createError from 'http-errors'
@@ -11,6 +12,19 @@ import createError from 'http-errors'
 
 
 const app = express()
+
+if (process.env.RESET_DB) {
+  const seedDatabase = async () => {
+    await Dog.deleteMany({})
+
+    data.forEach((dog) => {
+      new Dog(dog).save()
+    })
+  }
+
+  seedDatabase()
+}
+
 
 // MIDDLEWARES to enable cors and json body parsing
 app.use(cors())
@@ -21,6 +35,10 @@ app.use((req, res, next) => {
   } else {
     res.status(503).json({ error: 'Service unavailabale' })
   }
+})
+
+app.get('/', (req, res) => {
+  res.send('Hello world')
 })
 
 // ------------------ Seller ROUTES ------------------------- //
@@ -50,9 +68,7 @@ app.get('/', async (req, res, next) => {
   res.json(data)
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
+
 
 
 /* Admin endpoint - to be removed */
@@ -94,7 +110,11 @@ app.post('/login', async (req, res, next) => {
   }
 })
 
+// ------------------ Dogs ROUTES ------------------------- //
 
+app.get('/dogs', (req, res) => {
+  res.json(data)
+})
 
 /* Error handling */
 app.use((req, res) => {
@@ -105,7 +125,7 @@ app.use((err, res) => {
   res.status(status).json({ error: err.message })
 })
 
-// ------------------ Dogs ROUTES ------------------------- //
+
 
 
 

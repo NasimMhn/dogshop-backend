@@ -2,6 +2,8 @@ import mongoose from 'mongoose'
 import app from './src/app.js'
 
 
+
+
 // MONGOOSE SETUP
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/dogShopAPI"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
