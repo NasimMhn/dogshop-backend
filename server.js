@@ -5,7 +5,7 @@ import app from './src/app.js'
 
 
 // MONGOOSE SETUP
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/dogShopAPI"
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/dogshop"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 

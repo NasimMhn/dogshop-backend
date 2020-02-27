@@ -2,7 +2,7 @@
   {
     "ras": "Chihuahua",
     "age": "4 years",
-    "price": "8000 kr",
+    "price": 8000,
     "sex": "male",
     "listed_in": "company",
     "description": "very nice and kind dog",
@@ -13,7 +13,7 @@
   {
     "ras": "Maltipoo/Blandras",
     "age": "1 year",
-    "price": "12000 kr",
+    "price": 12000,
     "sex": "male",
     "listed_in": "company",
     "description": "sweet and kind - Allergi fri",
@@ -24,7 +24,7 @@
   {
     "ras": "Labrador retriever",
     "age": "22 months old",
-    "price": "2000 kr",
+    "price": 2000,
     "sex": "female",
     "listed_in": "Avelshund",
     "description": "very family friendly",

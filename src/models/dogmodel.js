@@ -26,10 +26,12 @@ const Dog = mongoose.model('Dog', {
     type: String
   },
   addedAt: {
-    type: String
+    type: String,
+    default: new Date()
   },
   seller: {
-    type: String
+    type: String,
+    required: true
   },
 })
 
