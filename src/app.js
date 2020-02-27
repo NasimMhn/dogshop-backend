@@ -1,41 +1,54 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import mongoose from 'mongoose'
 import Seller from '../lib/user/sellermodel'
-import Shopper from '../lib/user/shoppermodel'
+// import Dog from '../lib/dogdata/dogmodel'
+// import Shopper from '../lib/user/shoppermodel'
 import bcrypt from 'bcrypt-nodejs'
-// import createError from 'http-errors'
+import createError from 'http-errors'
+
+
 
 const app = express()
 
-// Add middlewares to enable cors and json body parsing
+// MIDDLEWARES to enable cors and json body parsing
 app.use(cors())
 app.use(bodyParser.json())
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState === 1) {
+    next()
+  } else {
+    res.status(503).json({ error: 'Service unavailabale' })
+  }
+})
 
-/* Authenticate the user, then go to next route */
-// app.get('/', async (req, res, next) => {
-//   try {
-//     const authToken = req.header('Authorization')
-//     const user = await User.findOne({ accessToken: authToken })
-//     if (user) {
-//       next()
-//     } else {
-//       throw new createError(403, 'you are not authorized to access this') // TODO fix status code in error handling
-//     }
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+// ------------------ Seller ROUTES ------------------------- //
 
-/* Main endpoint for logged in users */
-// app.get('/', async (req, res, next) => {
-//   const data = [
-//     'This is a secret message',
-//     'This is another secret message',
-//     `This is a third secret message, don't tell`
-//   ]
-//   res.json(data)
-// })
+/* Authenticate the seller, then go to next route */
+app.get('/', async (req, res, next) => {
+  try {
+    const authToken = req.header('Authorization')
+    const seller = await Seller.findOne({ accessToken: authToken })
+    if (seller) {
+      next()
+    } else {
+      throw new createError(403, 'you are not authorized to access this') // TODO fix status code in error handling
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+/* Main endpoint for logged in sellers */
+app.get('/', async (req, res, next) => {
+  const data = [
+    'This is a secret message',
+    'This is another secret message',
+    `This is a third secret message, don't tell`
+  ]
+  res.json(data)
+})
 
 app.get('/', (req, res) => {
   res.send('Hello world')
@@ -81,14 +94,19 @@ app.post('/login', async (req, res, next) => {
   }
 })
 
+
+
+/* Error handling */
 app.use((req, res) => {
   res.status(404).json({ error: `route ${req.originalUrl} doesn't exist` })
 })
-
-/* Error handling */
-app.use((err, req, res, next) => {
+app.use((err, res) => {
   const status = err.status || 500
   res.status(status).json({ error: err.message })
 })
+
+// ------------------ Dogs ROUTES ------------------------- //
+
+
 
 module.exports = app
