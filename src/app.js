@@ -11,6 +11,8 @@ import createError from 'http-errors'
 
 
 const app = express()
+
+// environment variable 
 console.log(process.env.RESET_DB)
 if (process.env.RESET_DB) {
   const seedDatabase = async () => {
@@ -19,7 +21,6 @@ if (process.env.RESET_DB) {
       new Dog(dog).save()
     })
   }
-
   seedDatabase()
 }
 
@@ -39,7 +40,7 @@ app.get('/', (req, res) => {
   res.send('Hello world')
 })
 
-// ------------------ Seller ROUTES ------------------------- //
+// ------------------ USER ROUTES ------------------------- //
 
 /* Authenticate the seller, then go to next route */
 app.get('/', async (req, res, next) => {
@@ -56,7 +57,7 @@ app.get('/', async (req, res, next) => {
   }
 })
 
-/* Main endpoint for logged in sellers */
+/* Main endpoint for logged in user */
 app.get('/', async (req, res, next) => {
   const data = [
     "You are logged in"
@@ -64,13 +65,20 @@ app.get('/', async (req, res, next) => {
   res.json(data)
 })
 
-
-
-
 /* user endpoint */
 app.get('/user', async (req, res, next) => {
   try {
     const user = await User.find()
+    res.json(user)
+  } catch (err) {
+    next(err)
+  }
+})
+
+app.get('/users', async (req, res, next) => {
+  try {
+    // selects name and email to be returned
+    const user = await User.find().select("name email")
     res.json(user)
   } catch (err) {
     next(err)
@@ -106,10 +114,28 @@ app.post('/login', async (req, res, next) => {
   }
 })
 
-// ------------------ Dogs ROUTES ------------------------- //
+// ------------------ DOG ROUTES ------------------------- //
 
-app.get('/dogs', (req, res) => {
-  res.json(data)
+// Get all dogs
+app.get('/dogs', async (req, res, next) => {
+  try {
+    const dogs = await Dog.find()
+    res.json(dogs)
+  }
+  catch(err) {
+    next(err)
+  }
+})
+
+// Get dog by id
+app.get('/dog/:id', async (req, res, next) => {
+  try {
+    const dog = await Dog.findOne({_id: req.params.id})
+    res.json(dog)
+  }
+  catch(err) {
+    next(err)
+  }
 })
 
 /* Error handling */
