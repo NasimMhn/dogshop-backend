@@ -22,32 +22,8 @@ const User = mongoose.model('User', {
   role: {
     type: String,
     required: true,
-    enum: ["admin", "buyer", "seller"],
+    enum: ["Admin", "Buyer", "Seller"],
     default: "buyer"
-  },
-  details: {
-    type: Object,
-    default: UserDetail
-
-  }
-})
-
-const UserDetail = mongoose.model('UserDetail', {
-  phone: {
-    type: String,
-    default: ""
-  },
-  street: {
-    type: String,
-    default: ""
-  },
-  postalcode: {
-    type: String,
-    default: ""
-  },
-  city: {
-    type: String,
-    default: ""
   }
 })
 

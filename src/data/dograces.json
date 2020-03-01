@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "5e58383cf6eea26b079e590a",
+    "name": "Chihuahua",
+    "description": "Very nice and kind dog",
+    "activity": [
+      "Medium"
+    ],
+    "group": [
+      "Toy"
+    ],
+    "size": [
+      "XSmall"
+    ]
+  },
+  {
+    "_id": "5e58383cf6eea26b079e590c",
+    "name": "Golder retriver",
+    "description": "Family friendly dog",
+    "activity": [
+      "Medium",
+      "High"
+    ],
+    "group": [
+      "Working",
+      "Herding"
+    ],
+    "size": [
+      "Large"
+    ]
+  }
+]

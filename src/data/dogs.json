@@ -1,38 +1,32 @@
 [
   {
-    "_id": "5e58383cf6eea26b079e590b",
-    "ras": "Chihuahua",
+    "race": "5e58383cf6eea26b079e590a",
     "age": "4 years",
     "price": 8000,
     "sex": "male",
-    "listed_in": "company",
     "description": "very nice and kind dog",
     "location": "Malmö",
     "addedAt": "February 04, 2020",
-    "seller": "nasim"
+    "owner": "5e5b8e15999899821c5f71fa"
   },
   {
-    "_id": "5e5839884515396bbc827884",
-    "ras": "Maltipoo/Blandras",
+    "race": "5e58383cf6eea26b079e590c",
     "age": "1 year",
     "price": 12000,
     "sex": "male",
-    "listed_in": "company",
-    "description": "sweet and kind - Allergi fri",
+    "description": "Sweet and kind. Looking for a new home",
     "location": "Stockholm",
     "addedAt": "February 06, 2020",
-    "seller": "Viktoria"
+    "owner": "5e5b8e15999899821c5f71fa"
   },
   {
-    "_id": "5e5839884515396bbc827885",
-    "ras": "Labrador retriever",
+    "race": "5e58383cf6eea26b079e590c",
     "age": "22 months old",
     "price": 2000,
     "sex": "female",
-    "listed_in": "Avelshund",
-    "description": "very family friendly",
+    "description": "Very family friendly dog",
     "location": "Göteborg",
     "addedAt": "February 07, 2020",
-    "seller": "Mikael"
+    "owner": "5e5b8e27999899821c5f71fb"
   }
 ]

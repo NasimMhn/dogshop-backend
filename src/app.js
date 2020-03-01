@@ -4,25 +4,50 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import User from './models/usermodel'
 import Dog from './models/dogmodel'
-import data from './data/dogs.json'
+import DogRace from './models/dogracemodel'
+
+import dogData from './data/dogs.json'
+import dograceData from './data/dograces.json'
+import userData from './data/users.json'
+
 import bcrypt from 'bcrypt-nodejs'
 import createError from 'http-errors'
 
-
-
 const app = express()
 
-// environment variable 
-console.log(process.env.RESET_DB)
+
+
+console.log(`\nRESET_DB: ${process.env.RESET_DB} \n`)
+
 if (process.env.RESET_DB) {
+
+  // CREATING TEST DATA
   const seedDatabase = async () => {
+
+    // Removing and repopulating dog races
+    await DogRace.deleteMany({})
+    dograceData.forEach((race) => {
+      new DogRace(race).save()
+    })
+
+    // Removing and repopulating users
+    await User.deleteMany({})
+    userData.forEach((user) => {
+      new User(user).save()
+    })
+
+    // Removing and repopulating dogs
     await Dog.deleteMany({})
-    data.forEach((dog) => {
+    dogData.forEach((dog) => {
       new Dog(dog).save()
     })
+
   }
+
   seedDatabase()
 }
+
+
 
 
 // MIDDLEWARES to enable cors and json body parsing
@@ -101,7 +126,6 @@ app.post('/login', async (req, res, next) => {
   console.log("/login", req.body)
   try {
     const { email, password } = req.body
-    console.log(res)
     const user = await User.findOne({ email: email })
     if (user && bcrypt.compareSync(password, user.password)) {
       user.password = undefined /* we don't want to send the password hash to the client */
@@ -119,10 +143,10 @@ app.post('/login', async (req, res, next) => {
 // Get all dogs
 app.get('/dogs', async (req, res, next) => {
   try {
-    const dogs = await Dog.find()
+    const dogs = await Dog.find().populate('race owner')
     res.json(dogs)
   }
-  catch(err) {
+  catch (err) {
     next(err)
   }
 })
@@ -130,10 +154,10 @@ app.get('/dogs', async (req, res, next) => {
 // Get dog by id
 app.get('/dog/:id', async (req, res, next) => {
   try {
-    const dog = await Dog.findOne({_id: req.params.id})
+    const dog = await Dog.findOne({ _id: req.params.id }).populate('race owner')
     res.json(dog)
   }
-  catch(err) {
+  catch (err) {
     next(err)
   }
 })

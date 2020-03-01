@@ -1,0 +1,38 @@
+[
+  {
+    "role": "Seller",
+    "_id": "5e5b8e27999899821c5f71fb",
+    "name": "Mikael Persson",
+    "email": "mikael@mail.com",
+    "password": "$2a$10$5/4vcjgEz2DqjKIuGFF7zOn9txlZ9NXJMXV/0wI03PJnSKlCWFRDW",
+    "accessToken": "ba5bf7fa71e77596d4e960a01c7639a310ac1fb24b80a2736a003829a16e1bc9811b2421a2aebe73143931db1662060d05f3bdff89ad7d081225982d349929bd5cddfb7700b10d8853f3a6ff2aa51e0f7b02d8587c01eed46b2415db8f784c956cebf57e6d087c36e191079c3566b7881dc7005cd78f2e112f2897c0f893884d",
+    "__v": 0
+  },
+  {
+    "_id": "5e5b8e15999899821c5f71fa",
+    "role": "Seller",
+    "name": "Nasim Mahzoun",
+    "email": "nasim@mail.com",
+    "password": "$2a$10$1RxWJ7MlGijCym3nBwoOzO0znVw4T.d2zyhAEbNpQZyaf4Q5EvMhy",
+    "accessToken": "ac8e7682b73bc90d259bbfddf5f010cab2d656987de58387672db6af697f4a83aabf8cd1808ba0cd69aef452f8983e01144d905b59d1e5f285caa9ebcc3e0b0e0473c5f988e9484362e834c3af42653fd38d92c455196063c02417a449381967e8b15e429a9aa46f0be8ea74d83b936390c56b2719d464479f7a8346a08a4915",
+    "__v": 0
+  },
+  {
+    "role": "Admin",
+    "_id": "5e5b8e824bad3e82509b3514",
+    "name": "Admin Person",
+    "email": "admin@mail.com",
+    "password": "$2a$10$WFMXs1onakuFI4J2zqrBOOE.hCT2EuOf6ElYpDvoT0T9lCDqWVQ9a",
+    "accessToken": "953c917a4019c289f6dbe6fb7b23c33cd6c026f0d61fbae995e09ecc802b5c1cf31ba6146977a1c2e09906310498fd945d83cf04e62263ea36a94635f85bcdd35bc5e9fcd0cdf3840df5792c225feb90c8e39d63221516855a06b0637adb0e71db7f87c6e625d5dc3a11517dc602ac1852c6b89f5e034f653e0244b04a4692d8",
+    "__v": 0
+  },
+  {
+    "role": "Buyer",
+    "_id": "5e5b8ea6957e24826ceb80b4",
+    "name": "Nils Buyer",
+    "email": "nils@mail.com",
+    "password": "$2a$10$lytGKV5zQyiEqSi.60cZneQ00HBifHm6I1PuSZWls/3IU4zjZoiX.",
+    "accessToken": "e448e0209d9939801317fe610dbccb0e0fd11af0a4fb37e0ef03cf5e3f50b6e5191b199770a32bd2f0cbe46d9aeeb82c0e49c9d2f6be2867ccf4548f4af9612b2cafb43b2081bad97dee483c956f58876ef88bbc433d371a34c1fec39c5736f0b3690006766a4688238fb7b06db4a9014721849bc0dc6d19487f177320c7b3f3",
+    "__v": 0
+  }
+]
