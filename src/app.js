@@ -2,26 +2,26 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose from 'mongoose'
+import bcrypt from 'bcrypt-nodejs'
+import createError from 'http-errors'
+
+// Models
 import User from './models/usermodel'
 import Dog from './models/dogmodel'
 import DogRace from './models/dogracemodel'
 
+// JSON data
 import dogData from './data/dogs.json'
 import dograceData from './data/dograces.json'
 import userData from './data/users.json'
 
-import bcrypt from 'bcrypt-nodejs'
-import createError from 'http-errors'
-
 const app = express()
-
-
 
 console.log(`\nRESET_DB: ${process.env.RESET_DB} \n`)
 
 if (process.env.RESET_DB) {
 
-  // CREATING TEST DATA
+  // Populating database with test data
   const seedDatabase = async () => {
 
     // Removing and repopulating dog races
@@ -66,7 +66,6 @@ app.get('/', (req, res) => {
 })
 
 // ------------------ USER ROUTES ------------------------- //
-
 /* Authenticate the seller, then go to next route */
 app.get('/', async (req, res, next) => {
   try {
@@ -128,7 +127,7 @@ app.post('/login', async (req, res, next) => {
     const { email, password } = req.body
     const user = await User.findOne({ email: email })
     if (user && bcrypt.compareSync(password, user.password)) {
-      user.password = undefined /* we don't want to send the password hash to the client */
+      user.password = undefined // we don't want to send the password hash to the client
       res.json(user)
     } else {
       throw new Error(`user not found or password doesn't match`)
@@ -139,11 +138,17 @@ app.post('/login', async (req, res, next) => {
 })
 
 // ------------------ DOG ROUTES ------------------------- //
-
 // Get all dogs
 app.get('/dogs', async (req, res, next) => {
   try {
     const dogs = await Dog.find().populate('race owner')
+
+    // Removing sensitive user info
+    dogs.map(dog => {
+      dog.owner.password = undefined
+      dog.owner.accessToken = undefined
+    })
+
     res.json(dogs)
   }
   catch (err) {
@@ -154,7 +159,12 @@ app.get('/dogs', async (req, res, next) => {
 // Get dog by id
 app.get('/dog/:id', async (req, res, next) => {
   try {
-    const dog = await Dog.findOne({ _id: req.params.id }).populate('race owner')
+    const dog = await Dog.findById(req.params.id).populate('race owner')
+    // Removing sensitive user info
+    dog.owner.password = undefined
+    dog.owner.accessToken = undefined
+
+
     res.json(dog)
   }
   catch (err) {
@@ -162,7 +172,30 @@ app.get('/dog/:id', async (req, res, next) => {
   }
 })
 
-/* Error handling */
+// Get all dog races
+app.get('/dograces', async (req, res, next) => {
+  try {
+    const dograces = await DogRace.find().sort('name')
+    res.json(dograces)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
+// Get dog by id
+app.get('/dograce/:id', async (req, res, next) => {
+  try {
+    const dograce = await DogRace.findById(req.params.id)
+    res.json(dograce)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
+
+// ------------------ ERROR HANDLING ROUTES ------------------------- //
 app.use((req, res) => {
   res.status(404).json({ error: `route ${req.originalUrl} doesn't exist` })
 })

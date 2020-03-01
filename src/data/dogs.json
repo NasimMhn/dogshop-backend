@@ -1,5 +1,6 @@
 [
   {
+    "_id": "5e5b973544ae6a86546a8979",
     "race": "5e58383cf6eea26b079e590a",
     "age": "4 years",
     "price": 8000,
@@ -10,6 +11,7 @@
     "owner": "5e5b8e15999899821c5f71fa"
   },
   {
+    "_id": "5e5b973544ae6a86546a897a",
     "race": "5e58383cf6eea26b079e590c",
     "age": "1 year",
     "price": 12000,
@@ -20,6 +22,7 @@
     "owner": "5e5b8e15999899821c5f71fa"
   },
   {
+    "_id": "5e5b973544ae6a86546a897b",
     "race": "5e58383cf6eea26b079e590c",
     "age": "22 months old",
     "price": 2000,

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-//setup of dogmodel 
+// Setup of dogmodel 
 const Dog = mongoose.model('Dog', {
   // Properties defined here match the keys from the json file
   race: {
