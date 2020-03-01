@@ -203,7 +203,7 @@ app.delete('/dog/id/:id', async (req, res, next) => {
       throw createError(403, 'You are not authorized')
     }
     dog.deleteOne()
-    res.json(dog)
+    res.json(dog).status(204)
   }
   catch (err) {
     next(err)
@@ -252,6 +252,5 @@ app.use((err, res) => {
   const status = err.status || 500
   res.status(status).json({ error: err.message })
 })
-
 
 module.exports = app
