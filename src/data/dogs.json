@@ -7,7 +7,6 @@
     "sex": "male",
     "description": "very nice and kind dog",
     "location": "Malmö",
-    "addedAt": "February 04, 2020",
     "owner": "5e5b8e15999899821c5f71fa"
   },
   {
@@ -18,7 +17,6 @@
     "sex": "male",
     "description": "Sweet and kind. Looking for a new home",
     "location": "Stockholm",
-    "addedAt": "February 06, 2020",
     "owner": "5e5b8e15999899821c5f71fa"
   },
   {
@@ -29,7 +27,6 @@
     "sex": "female",
     "description": "Very family friendly dog",
     "location": "Göteborg",
-    "addedAt": "February 07, 2020",
     "owner": "5e5b8e27999899821c5f71fb"
   }
 ]

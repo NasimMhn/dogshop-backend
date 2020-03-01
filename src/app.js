@@ -66,12 +66,12 @@ app.get('/', (req, res) => {
 })
 
 // ------------------ USER ROUTES ------------------------- //
-/* Authenticate the seller, then go to next route */
+/* Authenticate the user, then go to next route */
 app.get('/', async (req, res, next) => {
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken })
-    if (seller) {
+    if (user) {
       next()
     } else {
       throw new createError(403, 'you are not authorized to access this') // TODO fix status code in error handling
@@ -171,6 +171,24 @@ app.get('/dog/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+app.post('/dog', async (req, res, next) => {
+
+  try {
+    const authToken = req.header('Authorization')
+    const user = await User.findOne({ accessToken: authToken, _id: req.body.owner })
+    console.log(user)
+    if (user === null || user.role !== 'Seller') {
+      throw createError(403, 'You are not authorized')
+    }
+    const dog = await new Dog(req.body).save()
+    res.json(dog)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
 
 // Get all dog races
 app.get('/dograces', async (req, res, next) => {
