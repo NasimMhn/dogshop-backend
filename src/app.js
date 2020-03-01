@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import mongoose from 'mongoose'
+import mongoose, { Query } from 'mongoose'
 import bcrypt from 'bcrypt-nodejs'
 import createError from 'http-errors'
 
@@ -49,7 +49,6 @@ if (process.env.RESET_DB) {
 
 
 
-
 // MIDDLEWARES to enable cors and json body parsing
 app.use(cors())
 app.use(bodyParser.json())
@@ -74,7 +73,7 @@ app.get('/', async (req, res, next) => {
     if (user) {
       next()
     } else {
-      throw new createError(403, 'you are not authorized to access this') // TODO fix status code in error handling
+      throw new createError(403, 'you are not authorized to access this')
     }
   } catch (err) {
     next(err)
@@ -89,7 +88,7 @@ app.get('/', async (req, res, next) => {
   res.json(data)
 })
 
-/* user endpoint */
+
 app.get('/user', async (req, res, next) => {
   try {
     const user = await User.find()
@@ -101,8 +100,7 @@ app.get('/user', async (req, res, next) => {
 
 app.get('/users', async (req, res, next) => {
   try {
-    // selects name and email to be returned
-    const user = await User.find().select("name email")
+    const user = await User.find().select("name email") // Select only name and email to be returned
     res.json(user)
   } catch (err) {
     next(err)
@@ -157,7 +155,7 @@ app.get('/dogs', async (req, res, next) => {
 })
 
 // Get dog by id
-app.get('/dog/:id', async (req, res, next) => {
+app.get('/dog/id/:id', async (req, res, next) => {
   try {
     const dog = await Dog.findById(req.params.id).populate('race owner')
     // Removing sensitive user info
@@ -189,11 +187,44 @@ app.post('/dog', async (req, res, next) => {
   }
 })
 
+app.delete('/dog/id/:id', async (req, res, next) => {
+  try {
+    const authToken = req.header('Authorization')
+    const user = await User.findOne({ accessToken: authToken })
+    const dog = await Dog.findById(req.params.id)
+
+    // If no dog found
+    if (dog == null) {
+      throw createError(404, 'No dog with this id found')
+    }
+    // If no user found, or id from user object and owner does not match
+    // N.B. object id's must be compared as strings
+    if (user === null || String(user._id) !== String(dog.owner._id)) {
+      throw createError(403, 'You are not authorized')
+    }
+    dog.deleteOne()
+    res.json(dog)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
 
 // Get all dog races
 app.get('/dograces', async (req, res, next) => {
+
+  let queryObj = {}
+  if (req.query.name) { queryObj['name'] = new RegExp(req.query.name, 'i') }
+  if (req.query.group) { queryObj['group'] = req.query.group } // fix so can query multiple groups
+  if (req.query.activity) { queryObj['activity'] = req.query.activity } // fix so can query multiple activities
+  if (req.query.size) { queryObj['size'] = req.query.size } // fix so can query multiple sizes
+
+  console.log("req.body", req.query)
+  console.log("queryObj", queryObj)
+
   try {
-    const dograces = await DogRace.find().sort('name')
+    const dograces = await DogRace.find(queryObj).sort('name')
     res.json(dograces)
   }
   catch (err) {
@@ -202,7 +233,7 @@ app.get('/dograces', async (req, res, next) => {
 })
 
 // Get dog by id
-app.get('/dograce/:id', async (req, res, next) => {
+app.get('/dograce/id/:id', async (req, res, next) => {
   try {
     const dograce = await DogRace.findById(req.params.id)
     res.json(dograce)
@@ -221,9 +252,6 @@ app.use((err, res) => {
   const status = err.status || 500
   res.status(status).json({ error: err.message })
 })
-
-
-
 
 
 module.exports = app
