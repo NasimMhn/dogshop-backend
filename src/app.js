@@ -138,27 +138,38 @@ app.post('/login', async (req, res, next) => {
 // ------------------ DOG ROUTES ------------------------- //
 // Get all dogs
 app.get('/dogs', async (req, res, next) => {
-  let queryObj = {}
-  if (req.query.sex) { queryObj['sex'] = req.query.sex }
+
+  /*  First query on dog races  */
+  let raceQuery = {}
+  if (req.query.race) { raceQuery['name'] = new RegExp(req.query.race, 'i') }
+  if (req.query.group) { raceQuery['group'] = req.query.group } // fix so can query multiple groups
+  if (req.query.activity) { raceQuery['activity'] = req.query.activity } // fix so can query multiple activities
+  if (req.query.size) { raceQuery['size'] = req.query.size } // fix so can query multiple sizes
+  console.log("raceQuery", raceQuery)
+  const dograces = await DogRace.find(raceQuery).select('_id')
+
+  let race_ids = []
+  dograces.map((race) => race_ids.push(String(race._id)))
+
+
+
+  /*  Secondly query on dog  */
+  let dogQuery = {}
+  if (req.query.sex) { dogQuery['sex'] = req.query.sex }
 
   try {
     // const dogs = await Dog.find(queryObj).populate('race owner')
-    const dogs = await Dog.find(queryObj)
+    const dogs = await Dog.find(dogQuery)
       .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
-      .populate("race")
+      .populate('race')
 
-
-    /* To filter out on race name */
-    let filtered = []
+    /* To filter out based on previous race query */
+    let filteredDogs = []
     dogs.map((dog) => {
-      // Filter out on dog race
-      if (new RegExp(req.query.race, 'i').test(dog.race.name)) {
-        filtered.push(dog)
-
-      }
+      if (race_ids.includes(String(dog.race._id))) { filteredDogs.push(dog) }
     })
 
-    res.json(filtered)
+    res.json(filteredDogs)
   }
   catch (err) {
     next(err)
