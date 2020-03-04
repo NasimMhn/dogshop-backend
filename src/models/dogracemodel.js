@@ -10,6 +10,11 @@ const DogRace = mongoose.model('DogRace', {
   description: {
     type: String
   },
+  images: {
+    url: {
+      type: String
+    },
+  },
   activity: {
     type: [String],
     enum: ["High", "Medium", "Low"]

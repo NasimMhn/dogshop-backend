@@ -3,6 +3,9 @@
     "_id": "5e58383cf6eea26b079e590a",
     "name": "Chihuahua",
     "description": "Very nice and kind dog",
+    "images": {
+      "url": "chihuahua-700x700.jpg"
+    },
     "activity": [
       "Medium"
     ],
@@ -17,6 +20,9 @@
     "_id": "5e58383cf6eea26b079e590c",
     "name": "Golder retriver",
     "description": "Family friendly dog",
+    "images": {
+      "url": "golden-retriever-700x700.jpg"
+    },
     "activity": [
       "Medium",
       "High"
@@ -33,6 +39,9 @@
     "_id": "5e58383cf6eea26b079e590b",
     "name": "Akita",
     "description": "........",
+    "images": {
+      "url": "akita-700x700.jpg"
+    },
     "activity": [
       "Medium",
       "High"

@@ -138,16 +138,27 @@ app.post('/login', async (req, res, next) => {
 // ------------------ DOG ROUTES ------------------------- //
 // Get all dogs
 app.get('/dogs', async (req, res, next) => {
-  try {
-    const dogs = await Dog.find().populate('race owner')
+  let queryObj = {}
+  if (req.query.sex) { queryObj['sex'] = req.query.sex }
 
-    // Removing sensitive user info
-    dogs.map(dog => {
-      dog.owner.password = undefined
-      dog.owner.accessToken = undefined
+  try {
+    // const dogs = await Dog.find(queryObj).populate('race owner')
+    const dogs = await Dog.find(queryObj)
+      .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
+      .populate("race")
+
+
+    /* To filter out on race name */
+    let filtered = []
+    dogs.map((dog) => {
+      // Filter out on dog race
+      if (new RegExp(req.query.race, 'i').test(dog.race.name)) {
+        filtered.push(dog)
+
+      }
     })
 
-    res.json(dogs)
+    res.json(filtered)
   }
   catch (err) {
     next(err)
@@ -171,7 +182,6 @@ app.get('/dog/id/:id', async (req, res, next) => {
 })
 
 app.post('/dog', async (req, res, next) => {
-
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken, _id: req.body.owner })

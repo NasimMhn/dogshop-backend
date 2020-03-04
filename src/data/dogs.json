@@ -4,9 +4,12 @@
     "race": "5e58383cf6eea26b079e590a",
     "age": "4 years",
     "price": 8000,
-    "sex": "male",
+    "sex": "Male",
     "description": "very nice and kind dog",
     "location": "Malmö",
+    "images": {
+      "url": "no-dog.jpg"
+    },
     "owner": "5e5b8e15999899821c5f71fa"
   },
   {
@@ -14,9 +17,12 @@
     "race": "5e58383cf6eea26b079e590c",
     "age": "1 year",
     "price": 12000,
-    "sex": "male",
+    "sex": "Male",
     "description": "Sweet and kind. Looking for a new home",
     "location": "Stockholm",
+    "images": {
+      "url": "no-dog.jpg"
+    },
     "owner": "5e5b8e15999899821c5f71fa"
   },
   {
@@ -24,9 +30,12 @@
     "race": "5e58383cf6eea26b079e590c",
     "age": "22 months old",
     "price": 2000,
-    "sex": "female",
+    "sex": "Female",
     "description": "Very family friendly dog",
     "location": "Göteborg",
+    "images": {
+      "url": "no-dog.jpg"
+    },
     "owner": "5e5b8e27999899821c5f71fb"
   }
 ]
