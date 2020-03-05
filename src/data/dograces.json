@@ -72,5 +72,43 @@
     "size": [
       "Small"
     ]
+  },
+  {
+    "_id": "5e58383cf6eea26b079e591b",
+    "name": "Jack Russell Terrier",
+    "description": "........",
+    "images": {
+      "url": "jack-russell-terrier-smooth-700x700.jpg"
+    },
+    "activity": [
+      "Medium",
+      "High"
+    ],
+    "group": [
+      "Terrier",
+      "Sport"
+    ],
+    "size": [
+      "Small"
+    ]
+  },
+  {
+    "_id": "5e58383cf6eea26b079e591a",
+    "name": "Siberian Husky",
+    "description": "........",
+    "images": {
+      "url": "siberian-husky-sitting-isolated-700x700.jpg"
+    },
+    "activity": [
+      "Medium",
+      "Low"
+    ],
+    "group": [
+      "Sport",
+      "Working"
+    ],
+    "size": [
+      "Large"
+    ]
   }
 ]
