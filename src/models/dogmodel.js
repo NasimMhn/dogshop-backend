@@ -8,7 +8,7 @@ const Dog = mongoose.model('Dog', {
     ref: 'DogRace'
   },
   age: {
-    type: String
+    type: Number
   },
   images: {
     url: {
@@ -19,7 +19,8 @@ const Dog = mongoose.model('Dog', {
     type: Number
   },
   sex: {
-    type: String
+    type: String,
+    enum: ["Male", "Female"]
   },
   description: {
     type: String

@@ -2,7 +2,7 @@
   {
     "_id": "5e5b973544ae6a86546a8979",
     "race": "5e58383cf6eea26b079e590a",
-    "age": "4 years",
+    "age": 208,
     "price": 8000,
     "sex": "Male",
     "description": "very nice and kind dog",
@@ -15,7 +15,7 @@
   {
     "_id": "5e5b973544ae6a86546a897a",
     "race": "5e58383cf6eea26b079e590c",
-    "age": "1 year",
+    "age": 52,
     "price": 12000,
     "sex": "Male",
     "description": "Sweet and kind. Looking for a new home",
@@ -28,7 +28,7 @@
   {
     "_id": "5e5b973544ae6a86546a897b",
     "race": "5e58383cf6eea26b079e590c",
-    "age": "22 months old",
+    "age": 88,
     "price": 2000,
     "sex": "Female",
     "description": "Very family friendly dog",

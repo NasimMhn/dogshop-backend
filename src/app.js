@@ -136,40 +136,38 @@ app.post('/login', async (req, res, next) => {
 })
 
 // ------------------ DOG ROUTES ------------------------- //
-// Get all dogs
+// /dogs?name=&group=&activity=&size=&sex=&minPrice=&maxPrice=&minAge=&maxAge=&location=
 app.get('/dogs', async (req, res, next) => {
 
-  /*  First query on dog races  */
-  let raceQuery = {}
-  if (req.query.race) { raceQuery['name'] = new RegExp(req.query.race, 'i') }
-  if (req.query.group) { raceQuery['group'] = req.query.group } // fix so can query multiple groups
-  if (req.query.activity) { raceQuery['activity'] = req.query.activity } // fix so can query multiple activities
-  if (req.query.size) { raceQuery['size'] = req.query.size } // fix so can query multiple sizes
-  console.log("raceQuery", raceQuery)
+  // This is a query object used to query the dog races
+  let raceQuery = {
+    "name": new RegExp(req.query.race, 'i'),
+    "group": req.query.group ? { $in: (req.query.group).split(',') } : undefined,
+    "activity": req.query.activity ? { $in: (req.query.activity).split(',') } : undefined,
+    "size": req.query.size ? { $in: (req.query.size).split(',') } : undefined,
+  }
+  Object.keys(raceQuery).forEach(key => raceQuery[key] === undefined ? delete raceQuery[key] : {}) // Removes keys which are undefined (empty)
+
   const dograces = await DogRace.find(raceQuery).select('_id')
-
-  let race_ids = []
-  dograces.map((race) => race_ids.push(String(race._id)))
+  let race_ids = dograces.map(({ _id }) => (new mongoose.Types.ObjectId(_id))) // array with id's of filtered dog races
 
 
 
-  /*  Secondly query on dog  */
-  let dogQuery = {}
-  if (req.query.sex) { dogQuery['sex'] = req.query.sex }
+  // This is a query object used to query the dogs
+  let dogQuery = {
+    "sex": req.query.sex ? req.query.sex : undefined,
+    "price": { $gte: req.query.minPrice || 0, $lte: req.query.maxPrice || 9999999 },
+    "age": { $gte: req.query.minAge || 0, $lte: req.query.maxAge || 9999999 },
+    "location": req.query.location ? req.query.location : undefined,
+  }
+  Object.keys(dogQuery).forEach(key => dogQuery[key] === undefined ? delete dogQuery[key] : {}) // Removes keys which are undefined (empty)
 
   try {
-    // const dogs = await Dog.find(queryObj).populate('race owner')
-    const dogs = await Dog.find(dogQuery)
+    const dogs = await Dog.find(dogQuery).where('race').in(race_ids)
       .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
       .populate('race')
 
-    /* To filter out based on previous race query */
-    let filteredDogs = []
-    dogs.map((dog) => {
-      if (race_ids.includes(String(dog.race._id))) { filteredDogs.push(dog) }
-    })
-
-    res.json(filteredDogs)
+    res.json(dogs)
   }
   catch (err) {
     next(err)
@@ -235,17 +233,17 @@ app.delete('/dog/id/:id', async (req, res, next) => {
 // Get all dog races
 app.get('/dograces', async (req, res, next) => {
 
-  let queryObj = {}
-  if (req.query.name) { queryObj['name'] = new RegExp(req.query.name, 'i') }
-  if (req.query.group) { queryObj['group'] = req.query.group } // fix so can query multiple groups
-  if (req.query.activity) { queryObj['activity'] = req.query.activity } // fix so can query multiple activities
-  if (req.query.size) { queryObj['size'] = req.query.size } // fix so can query multiple sizes
-
-  console.log("req.body", req.query)
-  console.log("queryObj", queryObj)
+  // This is a query object used to query the dog races
+  let raceQuery = {
+    "name": new RegExp(req.query.race, 'i'),
+    "group": req.query.group ? { $in: (req.query.group).split(',') } : undefined,
+    "activity": req.query.activity ? { $in: (req.query.activity).split(',') } : undefined,
+    "size": req.query.size ? { $in: (req.query.size).split(',') } : undefined,
+  }
+  Object.keys(raceQuery).forEach(key => raceQuery[key] === undefined ? delete raceQuery[key] : {}) // Removes keys which are undefined (empty)
 
   try {
-    const dograces = await DogRace.find(queryObj).sort('name')
+    const dograces = await DogRace.find(raceQuery).sort('name')
     res.json(dograces)
   }
   catch (err) {
