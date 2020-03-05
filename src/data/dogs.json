@@ -37,5 +37,18 @@
       "url": "no-dog.jpg"
     },
     "owner": "5e5b8e27999899821c5f71fb"
+  },
+  {
+    "_id": "5e5b973544ae6a86546a8971",
+    "race": "5e58383cf6eea26b079e590e",
+    "age": 6,
+    "price": 16000,
+    "sex": "Male",
+    "description": "Cute smart little guy. His name is Frankie.",
+    "location": "Uppsala",
+    "images": {
+      "url": "no-dog.jpg"
+    },
+    "owner": "5e5b8e15999899821c5f71fc"
   }
 ]

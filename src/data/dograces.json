@@ -52,5 +52,25 @@
     "size": [
       "Large"
     ]
+  },
+  {
+    "_id": "5e58383cf6eea26b079e590e",
+    "name": "Toy poodle",
+    "description": "........",
+    "images": {
+      "url": "white-toy-poodle-sitting-isolated-700x700.jpg"
+    },
+    "activity": [
+      "Medium",
+      "Low"
+    ],
+    "group": [
+      "Toy",
+      "Sport",
+      "Miscellaneous"
+    ],
+    "size": [
+      "Small"
+    ]
   }
 ]
