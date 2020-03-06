@@ -177,10 +177,9 @@ app.get('/dogs', async (req, res, next) => {
 // Get dog by id
 app.get('/dog/id/:id', async (req, res, next) => {
   try {
-    const dog = await Dog.findById(req.params.id).populate('race owner')
-    // Removing sensitive user info
-    dog.owner.password = undefined
-    dog.owner.accessToken = undefined
+    const dog = await Dog.findById(req.params.id)
+      .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
+      .populate('race')
 
 
     res.json(dog)
