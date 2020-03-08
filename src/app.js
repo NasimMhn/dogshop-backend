@@ -136,43 +136,6 @@ app.post('/login', async (req, res, next) => {
 })
 
 // ------------------ DOG ROUTES ------------------------- //
-// /dogs?name=&group=&activity=&size=&sex=&minPrice=&maxPrice=&minAge=&maxAge=&location=
-app.get('/dogs', async (req, res, next) => {
-
-  // This is a query object used to query the dog races
-  let raceQuery = {
-    "name": new RegExp(req.query.race, 'i'),
-    "group": req.query.group ? { $in: (req.query.group).split(',') } : undefined,
-    "activity": req.query.activity ? { $in: (req.query.activity).split(',') } : undefined,
-    "size": req.query.size ? { $in: (req.query.size).split(',') } : undefined,
-  }
-  Object.keys(raceQuery).forEach(key => raceQuery[key] === undefined ? delete raceQuery[key] : {}) // Removes keys which are undefined (empty)
-
-  const dograces = await DogRace.find(raceQuery).select('_id')
-  let race_ids = dograces.map(({ _id }) => (new mongoose.Types.ObjectId(_id))) // array with id's of filtered dog races
-
-
-
-  // This is a query object used to query the dogs
-  let dogQuery = {
-    "sex": req.query.sex ? req.query.sex : undefined,
-    "price": { $gte: req.query.minPrice || 0, $lte: req.query.maxPrice || 9999999 },
-    "age": { $gte: req.query.minAge || 0, $lte: req.query.maxAge || 9999999 },
-    "location": req.query.location ? req.query.location : undefined,
-  }
-  Object.keys(dogQuery).forEach(key => dogQuery[key] === undefined ? delete dogQuery[key] : {}) // Removes keys which are undefined (empty)
-
-  try {
-    const dogs = await Dog.find(dogQuery).where('race').in(race_ids)
-      .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
-      .populate('race')
-
-    res.json(dogs)
-  }
-  catch (err) {
-    next(err)
-  }
-})
 
 // Get dog by id
 app.get('/dog/id/:id', async (req, res, next) => {
@@ -205,7 +168,7 @@ app.post('/dog', async (req, res, next) => {
   }
 })
 
-app.delete('/dog/id/:id', async (req, res, next) => {
+app.delete('/dog/:id', async (req, res, next) => {
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken })
@@ -228,9 +191,57 @@ app.delete('/dog/id/:id', async (req, res, next) => {
   }
 })
 
+// Get dog by id
+app.get('/dogbreed/:id', async (req, res, next) => {
+  try {
+    const dograce = await DogRace.findById(req.params.id)
+    res.json(dograce)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
+
+// /dogs?name=&group=&activity=&size=&sex=&minPrice=&maxPrice=&minAge=&maxAge=&location=
+app.get('/dogs', async (req, res, next) => {
+
+  // This is a query object used to query the dog races
+  let raceQuery = {
+    "name": new RegExp(req.query.race, 'i'),
+    "group": req.query.group ? { $in: (req.query.group).split(',') } : undefined,
+    "activity": req.query.activity ? { $in: (req.query.activity).split(',') } : undefined,
+    "size": req.query.size ? { $in: (req.query.size).split(',') } : undefined,
+  }
+  Object.keys(raceQuery).forEach(key => raceQuery[key] === undefined ? delete raceQuery[key] : {}) // Removes keys which are undefined (empty)
+
+  const dograces = await DogRace.find(raceQuery).select('_id')
+  let race_ids = dograces.map(({ _id }) => (new mongoose.Types.ObjectId(_id))) // array with id's of filtered dog races
+
+  // This is a query object used to query the dogs
+  let dogQuery = {
+    "sex": req.query.sex ? req.query.sex : undefined,
+    "price": { $gte: req.query.minPrice || 0, $lte: req.query.maxPrice || 9999999 },
+    "age": { $gte: req.query.minAge || 0, $lte: req.query.maxAge || 9999999 },
+    "location": req.query.location ? req.query.location : undefined,
+  }
+  Object.keys(dogQuery).forEach(key => dogQuery[key] === undefined ? delete dogQuery[key] : {}) // Removes keys which are undefined (empty)
+
+  try {
+    const dogs = await Dog.find(dogQuery).where('race').in(race_ids)
+      .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
+      .populate('race')
+
+    res.json(dogs)
+  }
+  catch (err) {
+    next(err)
+  }
+})
+
 
 // Get all dog races
-app.get('/dograces', async (req, res, next) => {
+app.get('/dogbreeds', async (req, res, next) => {
 
   // This is a query object used to query the dog races
   let raceQuery = {
@@ -250,16 +261,6 @@ app.get('/dograces', async (req, res, next) => {
   }
 })
 
-// Get dog by id
-app.get('/dograce/id/:id', async (req, res, next) => {
-  try {
-    const dograce = await DogRace.findById(req.params.id)
-    res.json(dograce)
-  }
-  catch (err) {
-    next(err)
-  }
-})
 
 
 // ------------------ ERROR HANDLING ROUTES ------------------------- //
