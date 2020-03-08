@@ -10,6 +10,9 @@ const Dog = mongoose.model('Dog', {
   age: {
     type: Number
   },
+  birthdate: {
+    type: Date
+  },
   images: {
     url: {
       type: String
