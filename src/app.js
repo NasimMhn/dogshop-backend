@@ -60,13 +60,10 @@ app.use((req, res, next) => {
   }
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
 
 // ------------------ USER ROUTES ------------------------- //
 /* Authenticate the user, then go to next route */
-app.get('/', async (req, res, next) => {
+app.get('/auth', async (req, res, next) => {
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken })
@@ -81,7 +78,7 @@ app.get('/', async (req, res, next) => {
 })
 
 /* Main endpoint for logged in user */
-app.get('/', async (req, res, next) => {
+app.get('/auth', async (req, res, next) => {
   const data = [
     "You are logged in"
   ]
