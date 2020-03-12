@@ -82,7 +82,7 @@ app.get('/auth', async (req, res, next) => {
   const data = [
     "You are logged in"
   ]
-  res.json(data)
+  res.json(true)
 })
 
 
@@ -153,14 +153,18 @@ app.post('/dog', async (req, res, next) => {
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken, _id: req.body.owner })
-    console.log(user)
+    console.log("user", user)
     if (user === null || user.role !== 'Seller') {
       throw createError(403, 'You are not authorized')
     }
+    console.log("before creating dog")
     const dog = await new Dog(req.body).save()
+    console.log("after saving dog: ", dog)
     res.json(dog)
   }
   catch (err) {
+    console.log("error in POST: ", err)
+
     next(err)
   }
 })
@@ -219,7 +223,7 @@ app.get('/dogs', async (req, res, next) => {
   let dogQuery = {
     "sex": req.query.sex ? req.query.sex : undefined,
     "price": { $gte: req.query.minPrice || 0, $lte: req.query.maxPrice || 9999999 },
-    "age": { $gte: req.query.minAge || 0, $lte: req.query.maxAge || 9999999 },
+    // "age": { $gte: req.query.minAge || 0, $lte: req.query.maxAge || 9999999 },
     "location": req.query.location ? req.query.location : undefined,
   }
   Object.keys(dogQuery).forEach(key => dogQuery[key] === undefined ? delete dogQuery[key] : {}) // Removes keys which are undefined (empty)

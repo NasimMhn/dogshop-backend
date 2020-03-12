@@ -5,7 +5,11 @@ const Dog = mongoose.model('Dog', {
   // Properties defined here match the keys from the json file
   race: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'DogRace'
+    ref: 'DogRace',
+    required: true
+  },
+  name: {
+    type: String,
   },
   age: {
     type: Number
@@ -15,7 +19,8 @@ const Dog = mongoose.model('Dog', {
   },
   images: {
     url: {
-      type: String
+      type: String,
+      default: "no-dog.jpg"
     },
   },
   price: {
@@ -37,7 +42,11 @@ const Dog = mongoose.model('Dog', {
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
+  },
+  phone: {
+    type: String,
   },
 })
 
