@@ -2,113 +2,117 @@
   {
     "_id": "5e58383cf6eea26b079e590a",
     "name": "Chihuahua",
-    "description": "Very nice and kind dog",
+    "description": "The Chihuahua is graceful, small, and compact, slightly longer than he is tall. The Chihuahua has a saucy expression and alert, terrier-like attitude. The coat can be smooth, with soft, glossy hair, or long, with soft straight or wavy coats and fringed ears.",
     "images": {
       "url": "chihuahua-700x700.jpg"
     },
     "activity": [
-      "Low"
+      "High"
     ],
     "group": [
       "Toy"
     ],
     "size": [
       "XSmall"
-    ]
+    ],
+    "weight": "3 kg",
+    "lifespan": "14–18 years"
   },
   {
     "_id": "5e58383cf6eea26b079e590c",
     "name": "Golder retriver",
-    "description": "Family friendly dog",
+    "description": "Goldens are athletic, strong and capable of carrying heavy game over land and water, using a broad, powerful head with strong neck and well-developed fore and hindquarters. The breed is slightly longer than tall, with a smooth, powerful, ground-covering gait, and dense, straight or wavy outer water-repellent coat.",
     "images": {
       "url": "golden-retriever-700x700.jpg"
     },
     "activity": [
-      "Medium",
-      "High"
+      "Medium"
     ],
     "group": [
-      "Working",
-      "Herding"
+      "Sport"
     ],
     "size": [
       "Large"
-    ]
+    ],
+    "weight": "25-34 kg",
+    "lifespan": "10-12 years"
   },
   {
     "_id": "5e58383cf6eea26b079e590b",
     "name": "Akita",
-    "description": "........",
+    "description": "The Akita is a large and powerful dog breed with a noble and intimidating presence. They were originally used for guarding royalty and nobility in feudal Japan. These dogs also tracked and hunted wild boar, black bear, and sometimes deer. The Akita does not back down from challenges and does not frighten easily. Consequently, they are fearless and loyal guardians of their families. Yet they are also affectionate, respectful, and amusing dogs when properly trained and socialized. An Akita is bound to shed quite a bit, and you may be wiping some drool from their face if you bring one home. Certainly, owners should be prepared for some cleanup. Furthermore, they tend to be stubborn and are not overly fond of strangers. While those can be good traits for a watchdog, they will need an experienced trainer if they are to interact with other animals or people. Novices beware. That said, dogs of this breed are faithful companions that will be attached to the right owner for life and shower them with adoration and love. Therefore, if you and your family are up for the challenge and consider adopting an Akita, you’ll have a lifelong friend that won’t let you down.",
     "images": {
       "url": "akita-700x700.jpg"
     },
     "activity": [
-      "Medium",
-      "High"
+      "Medium"
     ],
     "group": [
       "Working"
     ],
     "size": [
       "Large"
-    ]
+    ],
+    "weight": "10-13 kg",
+    "lifespan": "10–12 years"
   },
   {
     "_id": "5e58383cf6eea26b079e590e",
     "name": "Toy poodle",
-    "description": "........",
+    "description": "The Poodle is a square-proportioned dog with proud carriage and elegant appearance. They often move with a light, springy, effortless stride. The Poodle breed stems from working retriever origins, and their build reflects their athletic background. Their coat is curly and dense, forming a water resistant barrier.  Poodle often appear active, intelligent, and elegant. They have a proud bearing and air of distinction.",
     "images": {
       "url": "white-toy-poodle-sitting-isolated-700x700.jpg"
     },
     "activity": [
       "Medium",
-      "Low"
+      "High"
     ],
     "group": [
-      "Toy",
-      "Sport",
-      "Miscellaneous"
+      "Toy"
     ],
     "size": [
       "Small"
-    ]
+    ],
+    "weight": "5-8 kg",
+    "lifespan": "13–15 years"
   },
   {
     "_id": "5e58383cf6eea26b079e591b",
     "name": "Jack Russell Terrier",
-    "description": "........",
+    "description": "The Jack Russell Terrier is a fearless, not to mention tenacious, working terrier, bred to go to ground for work and loves to dig. He’s confident, alert and always ready for work. His weatherproof coat may be broken or smooth; his small, flexible chest helps him pursue underground quarry; and his long legs help him trail fast-running game.  The Jack Russell Terrier is well-balanced with substantial boning, signifying the endurance and strength needed as a hunting terrier.",
     "images": {
       "url": "jack-russell-terrier-smooth-700x700.jpg"
+    },
+    "activity": [
+      "High"
+    ],
+    "group": [
+      "Terrier"
+    ],
+    "size": [
+      "Small"
+    ],
+    "weight": "5-6 kg",
+    "lifespan": "12-15 years"
+  },
+  {
+    "_id": "5e58383cf6eea26b079e591a",
+    "name": "Siberian Husky",
+    "description": "The Siberian Husky combines power, speed, and endurance. They are moderately compact, slightly longer than they are tall, and of definite Northern heritage. They are quick and light on their feet, with a smooth and effortless stride exhibiting both good reach and drive. They have a double coat of medium length, with a soft, dense undercoat and straight, somewhat flat-lying outer coat. Their expression is often keen but friendly, interested, and sometimes even mischievous.",
+    "images": {
+      "url": "siberian-husky-sitting-isolated-700x700.jpg"
     },
     "activity": [
       "Medium",
       "High"
     ],
     "group": [
-      "Terrier",
-      "Sport"
-    ],
-    "size": [
-      "Small"
-    ]
-  },
-  {
-    "_id": "5e58383cf6eea26b079e591a",
-    "name": "Siberian Husky",
-    "description": "........",
-    "images": {
-      "url": "siberian-husky-sitting-isolated-700x700.jpg"
-    },
-    "activity": [
-      "Medium",
-      "Low"
-    ],
-    "group": [
-      "Sport",
       "Working"
     ],
     "size": [
       "Large"
-    ]
+    ],
+    "weight": "16-27 kg",
+    "lifespan": "11–13 years"
   }
 ]

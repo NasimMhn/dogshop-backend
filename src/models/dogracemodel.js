@@ -25,8 +25,20 @@ const DogRace = mongoose.model('DogRace', {
   },
   size: {
     type: [String],
-    enum: ["XLarge", "Large", "Medium", "Small", "XSmall"]
-  }
+    enum: ["XLarge", "Large", "Medium", "Small", "XSmall"],
+  },
+  weight: {
+    type: String,
+    default: ""
+  },
+  lifespan: {
+    type: String,
+    default: ""
+  },
+  lifespan: {
+    type: String,
+    default: ""
+  },
 })
 
 
