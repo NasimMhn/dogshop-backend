@@ -9,7 +9,7 @@
     "description": "very nice and kind dog",
     "location": "Malmö",
     "images": {
-      "url": "5e5b973544ae6a86546a8979.jpg"
+      "url": "/assets/dogs/5e5b973544ae6a86546a8979.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": ""
@@ -24,7 +24,7 @@
     "description": "Sweet and kind. Looking for a new home",
     "location": "Stockholm",
     "images": {
-      "url": "5e5b973544ae6a86546a897a.jpg"
+      "url": "/assets/dogs/5e5b973544ae6a86546a897a.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": "070-7871544"
@@ -39,7 +39,7 @@
     "description": "Very family friendly dog",
     "location": "Göteborg",
     "images": {
-      "url": "5e5b973544ae6a86546a897b.jpg"
+      "url": "/assets/dogs/5e5b973544ae6a86546a897b.jpg"
     },
     "owner": "5e5b8e27999899821c5f71fb",
     "phone": ""
@@ -55,7 +55,7 @@
     "description": "Cute smart little guy. His name is Frankie.",
     "location": "Uppsala",
     "images": {
-      "url": "5e5b973544ae6a86546a8971.jpg"
+      "url": "/assets/dogs/5e5b973544ae6a86546a8971.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": ""
@@ -70,7 +70,7 @@
     "description": "Retired hunter looking for a new home. Leon is a very playful and smart dog!",
     "location": "Malmö",
     "images": {
-      "url": "5e5b973544ae6a86546a8973.jpg"
+      "url": "/assets/dogs/5e5b973544ae6a86546a8973.jpg"
     },
     "owner": "5e5b8ea6957e24826ceb80b4",
     "phone": ""
@@ -85,7 +85,7 @@
     "description": "Big dog. Perfect for big family.",
     "location": "Stockholm",
     "images": {
-      "url": "5e5b973544ae6a86546a8974.jpg"
+      "url": "/assets/dogs/5e5b973544ae6a86546a8974.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": "010-44470110"

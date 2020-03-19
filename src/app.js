@@ -4,6 +4,7 @@ import cors from 'cors'
 import mongoose, { Query } from 'mongoose'
 import bcrypt from 'bcrypt-nodejs'
 import createError from 'http-errors'
+import fileUpload from 'express-fileUpload'
 
 // Models
 import User from './models/usermodel'
@@ -51,7 +52,9 @@ if (process.env.RESET_DB) {
 
 // MIDDLEWARES to enable cors and json body parsing
 app.use(cors())
+app.use(fileUpload())
 app.use(bodyParser.json())
+app.use(express.static('public'))
 app.use((req, res, next) => {
   if (mongoose.connection.readyState === 1) {
     next()
@@ -60,6 +63,26 @@ app.use((req, res, next) => {
   }
 })
 
+// ------------------ FILE UPLOAD ------------------------- //
+app.post('/upload', async (req, res) => {
+  console.log("\nreq.files", req.files)
+  if (req.files === null) {
+    console.log("\nno file uploaded\n")
+    return res.status(400).json({ msg: 'No file uploaded' })
+  }
+
+  const file = req.files.file
+  console.log("\nreq.files", req.files.file)
+  file.mv(`${__dirname}/../public/uploads/${file.name}`, err => {
+    console.log("\n file.mv \n")
+    if (err) {
+      console.error(err)
+      return res.status(500).send(err)
+    }
+  })
+  console.log("\nreq.files", req.files.file)
+  res.json({ fileName: file.name, filePath: `/uploads/${file.name}` })
+})
 
 // ------------------ USER ROUTES ------------------------- //
 /* Authenticate the user, then go to next route */
