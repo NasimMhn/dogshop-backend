@@ -95,6 +95,18 @@ app.get('/user', async (req, res, next) => {
   }
 })
 
+app.get('/user/id/:id', async (req, res, next) => {
+  console.log("req.params.id", req.params.id)
+  try {
+    const authToken = req.header('Authorization')
+    console.log("req.authToken.id", authToken)
+    const user = await User.findOne({ accessToken: authToken, _id: req.params.id }).select('name email phone ')
+    res.json(user)
+  } catch (err) {
+    next(err)
+  }
+})
+
 app.get('/users', async (req, res, next) => {
   try {
     const user = await User.find().select("name email") // Select only name and email to be returned
@@ -221,9 +233,9 @@ app.get('/dogs', async (req, res, next) => {
 
   // This is a query object used to query the dogs
   let dogQuery = {
+    "owner": req.query.userId || undefined,
     "sex": req.query.sex ? req.query.sex : undefined,
     "price": { $gte: req.query.minPrice || 0, $lte: req.query.maxPrice || 9999999 },
-    // "age": { $gte: req.query.minAge || 0, $lte: req.query.maxAge || 9999999 },
     "location": req.query.location ? req.query.location : undefined,
   }
   Object.keys(dogQuery).forEach(key => dogQuery[key] === undefined ? delete dogQuery[key] : {}) // Removes keys which are undefined (empty)
