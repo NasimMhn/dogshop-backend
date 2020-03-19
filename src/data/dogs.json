@@ -3,13 +3,13 @@
     "_id": "5e5b973544ae6a86546a8979",
     "name": "Jeb",
     "race": "5e58383cf6eea26b079e590a",
-    "birthdate": "2016-01-28",
+    "birthdate": "2020-01-05",
     "price": 8000,
     "sex": "Male",
     "description": "very nice and kind dog",
     "location": "Malmö",
     "images": {
-      "url": "no-dog.jpg"
+      "url": "5e5b973544ae6a86546a8979.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": ""
@@ -18,13 +18,13 @@
     "_id": "5e5b973544ae6a86546a897a",
     "name": "Sniffy",
     "race": "5e58383cf6eea26b079e590c",
-    "birthdate": "2017-04-28",
+    "birthdate": "2019-04-28",
     "price": 12000,
     "sex": "Male",
     "description": "Sweet and kind. Looking for a new home",
     "location": "Stockholm",
     "images": {
-      "url": "no-dog.jpg"
+      "url": "5e5b973544ae6a86546a897a.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": "070-7871544"
@@ -32,14 +32,14 @@
   {
     "_id": "5e5b973544ae6a86546a897b",
     "name": "Minnie",
-    "race": "5e58383cf6eea26b079e590c",
-    "birthdate": "2019-04-28",
+    "race": "5e58383cf6eea26b079e590b",
+    "birthdate": "2018-04-28",
     "price": 2000,
     "sex": "Female",
     "description": "Very family friendly dog",
     "location": "Göteborg",
     "images": {
-      "url": "no-dog.jpg"
+      "url": "5e5b973544ae6a86546a897b.jpg"
     },
     "owner": "5e5b8e27999899821c5f71fb",
     "phone": ""
@@ -49,7 +49,7 @@
     "name": "Frankie",
     "race": "5e58383cf6eea26b079e590e",
     "age": 6,
-    "birthdate": "2020-02-25",
+    "birthdate": "2018-05-25",
     "price": 16000,
     "sex": "Male",
     "description": "Cute smart little guy. His name is Frankie.",
@@ -64,13 +64,13 @@
     "_id": "5e5b973544ae6a86546a8973",
     "name": "Leon",
     "race": "5e58383cf6eea26b079e591b",
-    "birthdate": "2011-06-05",
-    "price": 500,
+    "birthdate": "2018-06-05",
+    "price": 3000,
     "sex": "Male",
-    "description": "Retired hunter. Still alert and playful",
+    "description": "Retired hunter looking for a new home. Leon is a very playful and smart dog!",
     "location": "Malmö",
     "images": {
-      "url": "no-dog.jpg"
+      "url": "5e5b973544ae6a86546a8973.jpg"
     },
     "owner": "5e5b8ea6957e24826ceb80b4",
     "phone": ""
@@ -79,13 +79,13 @@
     "_id": "5e5b973544ae6a86546a8974",
     "name": "Lissy",
     "race": "5e58383cf6eea26b079e591a",
-    "birthdate": "2020-03-01",
+    "birthdate": "2019-11-01",
     "price": 16000,
     "sex": "Female",
     "description": "Big dog. Perfect for big family.",
     "location": "Stockholm",
     "images": {
-      "url": "no-dog.jpg"
+      "url": "5e5b973544ae6a86546a8974.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": "010-44470110"
