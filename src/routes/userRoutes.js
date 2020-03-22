@@ -15,6 +15,7 @@ import createError from 'http-errors'
 const router = express.Router()
 
 // ------------------ USER ROUTES ------------------------- //
+
 /* Authenticate the user, then go to next route */
 router.get('/auth', async (req, res, next) => {
   console.log("GET /user/auth")
@@ -24,7 +25,7 @@ router.get('/auth', async (req, res, next) => {
     if (user) {
       next()
     } else {
-      throw new createError(403, 'you are not authorized to access this')
+      throw new createError(403, 'You are not authorized to access this')
     }
   } catch (err) {
     next(err)
@@ -33,10 +34,8 @@ router.get('/auth', async (req, res, next) => {
 
 /* Main endpoint for logged in user */
 router.get('/auth', async (req, res, next) => {
-  console.log("GET /user/auth -> next()")
-  const data = [
-    "You are logged in"
-  ]
+  console.log("GET /user/auth - OK")
+
   res.json(true)
 })
 
