@@ -14,7 +14,6 @@ import userData from './data/users.json'
 // Populating database with test data
 const ResetDB = async () => {
 
-  console.log("TEST")
   // Removing and repopulating breeds
   await Breed.deleteMany({})
   breedData.forEach((breed) => {
@@ -32,6 +31,7 @@ const ResetDB = async () => {
   dogData.forEach((dog) => {
     new Dog(dog).save()
   })
+  console.log("Database reset")
 }
 
 export default ResetDB

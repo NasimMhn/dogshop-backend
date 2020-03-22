@@ -20,7 +20,7 @@ const Dog = mongoose.model('Dog', {
   images: {
     url: {
       type: String,
-      default: "no-dog.jpg"
+      default: null
     },
   },
   price: {
