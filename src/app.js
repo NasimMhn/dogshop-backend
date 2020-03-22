@@ -2,18 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import mongoose, { Query } from 'mongoose'
-import createError from 'http-errors'
 import fileUpload from 'express-fileUpload'
 import ResetDB from './resetdb'
-// // Models
-// import User from './models/usermodel'
-// import Dog from './models/dogmodel'
-// import Breed from './models/breedmodel'
-
-// // JSON data
-// import dogData from './data/dogs.json'
-// import breedData from './data/breeds.json'
-// import userData from './data/users.json'
 
 // Routes
 import userRoutes from './routes/userRoutes'
@@ -27,7 +17,6 @@ console.log(`\nRESET_DB: ${process.env.RESET_DB} \n`)
 if (process.env.RESET_DB) {
   ResetDB()
 }
-
 
 
 // MIDDLEWARES to enable cors and json body parsing
@@ -68,8 +57,6 @@ app.post('/upload', async (req, res) => {
   })
   res.json({ fileName: file.name, filePath: `/uploads/${file.name}` })
 })
-
-
 
 
 
