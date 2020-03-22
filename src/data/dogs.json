@@ -2,7 +2,7 @@
   {
     "_id": "5e5b973544ae6a86546a8979",
     "name": "Jeb",
-    "race": "5e58383cf6eea26b079e590a",
+    "breed": "5e58383cf6eea26b079e590a",
     "birthdate": "2020-01-05",
     "price": 8000,
     "sex": "Male",
@@ -17,7 +17,7 @@
   {
     "_id": "5e5b973544ae6a86546a897a",
     "name": "Sniffy",
-    "race": "5e58383cf6eea26b079e590c",
+    "breed": "5e58383cf6eea26b079e590c",
     "birthdate": "2019-04-28",
     "price": 12000,
     "sex": "Male",
@@ -32,7 +32,7 @@
   {
     "_id": "5e5b973544ae6a86546a897b",
     "name": "Minnie",
-    "race": "5e58383cf6eea26b079e590b",
+    "breed": "5e58383cf6eea26b079e590b",
     "birthdate": "2018-04-28",
     "price": 2000,
     "sex": "Female",
@@ -47,7 +47,7 @@
   {
     "_id": "5e5b973544ae6a86546a8971",
     "name": "Frankie",
-    "race": "5e58383cf6eea26b079e590e",
+    "breed": "5e58383cf6eea26b079e590e",
     "age": 6,
     "birthdate": "2018-05-25",
     "price": 16000,
@@ -63,7 +63,7 @@
   {
     "_id": "5e5b973544ae6a86546a8973",
     "name": "Leon",
-    "race": "5e58383cf6eea26b079e591b",
+    "breed": "5e58383cf6eea26b079e591b",
     "birthdate": "2018-06-05",
     "price": 3000,
     "sex": "Male",
@@ -78,7 +78,7 @@
   {
     "_id": "5e5b973544ae6a86546a8974",
     "name": "Lissy",
-    "race": "5e58383cf6eea26b079e591a",
+    "breed": "5e58383cf6eea26b079e591a",
     "birthdate": "2019-11-01",
     "price": 16000,
     "sex": "Female",

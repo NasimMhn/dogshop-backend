@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 
 //setup of dogmodel 
-const DogRace = mongoose.model('DogRace', {
+const Breed = mongoose.model('Breed', {
   // Properties defined here match the keys from the json file
   name: {
     type: String
@@ -44,5 +44,5 @@ const DogRace = mongoose.model('DogRace', {
 
 
 
-module.exports = DogRace
+module.exports = Breed
 

@@ -3,9 +3,9 @@ import mongoose from 'mongoose'
 // Setup of dogmodel 
 const Dog = mongoose.model('Dog', {
   // Properties defined here match the keys from the json file
-  race: {
+  breed: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'DogRace',
+    ref: 'Breed',
     required: true
   },
   name: {
