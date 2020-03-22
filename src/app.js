@@ -4,16 +4,16 @@ import cors from 'cors'
 import mongoose, { Query } from 'mongoose'
 import createError from 'http-errors'
 import fileUpload from 'express-fileUpload'
+import ResetDB from './resetdb'
+// // Models
+// import User from './models/usermodel'
+// import Dog from './models/dogmodel'
+// import Breed from './models/breedmodel'
 
-// Models
-import User from './models/usermodel'
-import Dog from './models/dogmodel'
-import Breed from './models/breedmodel'
-
-// JSON data
-import dogData from './data/dogs.json'
-import breedData from './data/breeds.json'
-import userData from './data/users.json'
+// // JSON data
+// import dogData from './data/dogs.json'
+// import breedData from './data/breeds.json'
+// import userData from './data/users.json'
 
 // Routes
 import userRoutes from './routes/userRoutes'
@@ -25,33 +25,8 @@ const app = express()
 console.log(`\nRESET_DB: ${process.env.RESET_DB} \n`)
 
 if (process.env.RESET_DB) {
-
-  // Populating database with test data
-  const seedDatabase = async () => {
-
-    // Removing and repopulating breeds
-    await Breed.deleteMany({})
-    breedData.forEach((breed) => {
-      new Breed(breed).save()
-    })
-
-    // Removing and repopulating users
-    await User.deleteMany({})
-    userData.forEach((user) => {
-      new User(user).save()
-    })
-
-    // Removing and repopulating dogs
-    await Dog.deleteMany({})
-    dogData.forEach((dog) => {
-      new Dog(dog).save()
-    })
-
-  }
-
-  seedDatabase()
+  ResetDB()
 }
-
 
 
 
