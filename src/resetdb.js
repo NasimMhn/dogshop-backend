@@ -31,7 +31,7 @@ const ResetDB = async () => {
   dogData.forEach((dog) => {
     new Dog(dog).save()
   })
-  console.log("Database reset")
+  console.log("Database is now reset")
 }
 
 export default ResetDB

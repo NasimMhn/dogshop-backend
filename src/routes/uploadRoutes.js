@@ -26,13 +26,11 @@ conn.once('open', () => {
 export const storage = new MulterGridfsStorage({
   url: mongoUrl,
   file: (req, file) => {
-    console.log("FILE:", file)
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {
         if (err) {
           return reject(err)
         }
-        console.log("FILE", file)
         const filename = buf.toString('hex') + path.extname(file.originalname)
         const fileInfo = {
           filename: filename,
@@ -82,7 +80,6 @@ router.get('/image/:filename', (req, res) => {
   console.log(`GET /upload/image/${req.params.filename}`)
   gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
     // Check if file
-    console.log("file:", file)
     if (!file || file.length === 0) {
       return res.status(404).json({ errorMsg: "No file exist" })
     }
