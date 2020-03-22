@@ -16,12 +16,12 @@ const router = express.Router()
 
 // Get dog by id
 router.get('/id/:id', async (req, res, next) => {
+  console.log("GET /dog/id/", req.params.id)
+
   try {
     const dog = await Dog.findById(req.params.id)
       .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
       .populate('breed')
-
-
     res.json(dog)
   }
   catch (err) {
@@ -31,6 +31,7 @@ router.get('/id/:id', async (req, res, next) => {
 
 // POST
 router.post('/', async (req, res, next) => {
+  console.log("POST /dog ", req.body)
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken, _id: req.body.owner })
@@ -49,6 +50,8 @@ router.post('/', async (req, res, next) => {
 
 // DELETE
 router.delete('/id/:id', async (req, res, next) => {
+  console.log("DELETE /dog/id/", req.params.id)
+
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken })
@@ -75,8 +78,8 @@ router.delete('/id/:id', async (req, res, next) => {
 // GET dogs with query
 // /dogs?name=&group=&activity=&size=&sex=&minPrice=&maxPrice=&minAge=&maxAge=&location=
 router.get('/', async (req, res, next) => {
-  console.log("Query: ", req.query)
-  console.log("TEST")
+  console.log("GET /dog", req.query)
+
   // This is a query object used to query breeds
   let breedQuery = {
     "name": new RegExp(req.query.breed, 'i'),
@@ -102,7 +105,6 @@ router.get('/', async (req, res, next) => {
     const dogs = await Dog.find(dogQuery).where('breed').in(breed_ids)
       .populate({ path: 'owner', select: '-password -accessToken' }) // Removing sensitive user info
       .populate('breed')
-
     res.json(dogs)
   }
   catch (err) {

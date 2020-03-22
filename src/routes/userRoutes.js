@@ -17,6 +17,7 @@ const router = express.Router()
 // ------------------ USER ROUTES ------------------------- //
 /* Authenticate the user, then go to next route */
 router.get('/auth', async (req, res, next) => {
+  console.log("GET /user/auth")
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken })
@@ -32,6 +33,7 @@ router.get('/auth', async (req, res, next) => {
 
 /* Main endpoint for logged in user */
 router.get('/auth', async (req, res, next) => {
+  console.log("GET /user/auth -> next()")
   const data = [
     "You are logged in"
   ]
@@ -40,10 +42,9 @@ router.get('/auth', async (req, res, next) => {
 
 
 router.get('/id/:id', async (req, res, next) => {
-  console.log("req.params.id", req.params.id)
+  console.log("GET /user/id/", req.params.id)
   try {
     const authToken = req.header('Authorization')
-    console.log("req.authToken.id", authToken)
     const user = await User.findOne({ accessToken: authToken, _id: req.params.id }).select('name email phone ')
     res.json(user)
   } catch (err) {
@@ -52,6 +53,7 @@ router.get('/id/:id', async (req, res, next) => {
 })
 
 router.get('/', async (req, res, next) => {
+  console.log("GET /user")
   try {
     const user = await User.find().select("name email") // Select only name and email to be returned
     res.json(user)
@@ -62,12 +64,10 @@ router.get('/', async (req, res, next) => {
 
 
 router.post('/register', async (req, res, next) => {
-  console.log("/register", req.body)
+  console.log("GET /user/register ", req.body)
   try {
     let { name, email, password, role } = req.body
-    console.log("email", email)
     const user = await User.findOne({ email: email })
-    console.log("\n\n USER:", user)
     if (user === null) {
       const user = await new User({ name, email, password: bcrypt.hashSync(password), role }).save()
       res.status(201).json(user)
@@ -80,7 +80,7 @@ router.post('/register', async (req, res, next) => {
 })
 
 router.post('/login', async (req, res, next) => {
-  console.log("/login", req.body)
+  console.log("GET /user/login", req.body)
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email: email })

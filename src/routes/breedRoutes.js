@@ -13,6 +13,8 @@ const router = express.Router()
 
 // Get breed by id
 router.get('/id/:id', async (req, res, next) => {
+  console.log("GET /breed/id/", req.params.id)
+
   try {
     const breed = await Breed.findById(req.params.id)
     res.json(breed)
@@ -24,6 +26,8 @@ router.get('/id/:id', async (req, res, next) => {
 
 // Get all breeds
 router.get('/', async (req, res, next) => {
+  console.log("GET /breed ", req.query)
+
   // This is a query object used to query breeds
   let breedQuery = {
     "name": new RegExp(req.query.breed, 'i'),
