@@ -5,6 +5,7 @@ import mongoose, { Query } from 'mongoose'
 // Models
 import Dog from '../models/dogmodel'
 import Breed from '../models/breedmodel'
+import User from '../models/usermodel'
 
 import createError from 'http-errors'
 
@@ -33,17 +34,14 @@ router.post('/', async (req, res, next) => {
   try {
     const authToken = req.header('Authorization')
     const user = await User.findOne({ accessToken: authToken, _id: req.body.owner })
-    console.log("user", user)
     if (user === null || user.role !== 'Seller') {
       throw createError(403, 'You are not authorized')
     }
-    console.log("before creating dog")
     const dog = await new Dog(req.body).save()
-    console.log("after saving dog: ", dog)
     res.json(dog)
   }
   catch (err) {
-    console.log("error in POST: ", err)
+    console.error("Error:", err)
 
     next(err)
   }
