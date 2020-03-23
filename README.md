@@ -22,6 +22,7 @@ Frontend repo: https://github.com/Nasimmhn/dogshop-frontend
 * React Router
 * Redux
 * Styled components
+* Material UI
 
 ## View it live 🎯
 
