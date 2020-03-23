@@ -1,14 +1,10 @@
-# Final project API's and MongoDB
+## Final Project backend
 
-As it was my final project at Technigo, I decided to wrap up everything I have learnt during the program and build one bigger application. 
-General idea of the project: a platform for buying, adopting and selling pets. You can categorise pets to find the perfect pet. For example to search for 'small dogs under 2 years old'. 
-Since it's just a demo, I made a dummy-data for dogs and dog breeds, so I could make my collections based on the data. 
-I've made three collections for dogs, dog breeds and users who should be authorized first in order to publish an ad.
-Frontend repo: https://github.com/Nasimmhn/dogshop-frontend
+As it was my final project at Technigo, I decided to wrap up everything I have learnt during the program and build one larger application. General idea of the project: Platform for buying, adopting and selling pets. You can search by category to find the perfect dog for you. For example youc an search for 'small' dog of the type 'toy' in a certain price range. Since this is just a demo, I'm  using dummy-data for the dogs. 
+You have to be authorized before posting a dog - meaning you must create an account and login first. Frontend repo: https://github.com/Nasimmhn/dogshop-frontend
 
- ## Technologies used 💻
- 
- 
+### Technologies used 💻
+
 ### Backend:
 * Express
 * MongoDB
@@ -25,8 +21,5 @@ Frontend repo: https://github.com/Nasimmhn/dogshop-frontend
 * Material UI
 
 ## View it live 🎯
-
-* API base URL: https://dog-shop-by-nasim.herokuapp.com/
 * Frontend: https://dog-shop-by-nasim.netlify.com/
-
-
+* API base URL: https://dog-shop-by-nasim.herokuapp.com/
