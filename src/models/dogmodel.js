@@ -45,6 +45,10 @@ const Dog = mongoose.model('Dog', {
     ref: 'User',
     required: true
   },
+  sold: {
+    type: Boolean,
+    default: false
+  },
   phone: {
     type: String,
   },

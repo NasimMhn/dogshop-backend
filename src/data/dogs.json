@@ -12,6 +12,7 @@
       "url": "/assets/dogs/5e5b973544ae6a86546a8979.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
+    "sold": false,
     "phone": ""
   },
   {
@@ -27,6 +28,7 @@
       "url": "/assets/dogs/5e5b973544ae6a86546a897a.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
+    "sold": false,
     "phone": "070-7871544"
   },
   {
@@ -42,6 +44,7 @@
       "url": "/assets/dogs/5e5b973544ae6a86546a897b.jpg"
     },
     "owner": "5e5b8e27999899821c5f71fb",
+    "sold": false,
     "phone": ""
   },
   {
@@ -58,6 +61,7 @@
       "url": "/assets/dogs/5e5b973544ae6a86546a8971.jpg"
     },
     "owner": "5e5b8e15999899821c5f71fa",
+    "sold": false,
     "phone": ""
   },
   {
@@ -73,6 +77,7 @@
       "url": "/assets/dogs/5e5b973544ae6a86546a8973.jpg"
     },
     "owner": "5e5b8ea6957e24826ceb80b4",
+    "sold": false,
     "phone": ""
   },
   {
@@ -87,6 +92,7 @@
     "images": {
       "url": "/assets/dogs/5e5b973544ae6a86546a8974.jpg"
     },
+    "sold": false,
     "owner": "5e5b8e15999899821c5f71fa",
     "phone": "010-44470110"
   }

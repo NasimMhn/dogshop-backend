@@ -112,4 +112,19 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// Get dog by id
+router.put('/sold/id/:id', async (req, res, next) => {
+  console.log("PUT /sold/id/", req.params.id)
+
+  try {
+    const dog = await Dog.findById(req.params.id)
+    dog.sold = !dog.sold
+    dog.save()
+
+    res.json(dog)
+  }
+  catch (err) {
+    next(err)
+  }
+})
 module.exports = router
