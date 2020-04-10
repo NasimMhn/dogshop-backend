@@ -34,11 +34,7 @@ const Breed = mongoose.model('Breed', {
   lifespan: {
     type: String,
     default: ""
-  },
-  lifespan: {
-    type: String,
-    default: ""
-  },
+  }
 })
 
 
