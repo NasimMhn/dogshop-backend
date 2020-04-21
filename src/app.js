@@ -46,29 +46,6 @@ app.use((req, res, next) => {
   }
 })
 
-
- 
-
-// // ------------------ FILE UPLOAD ------------------------- //
-// app.post('/upload', async (req, res) => {
-//   if (req.files === null) {
-//     return res.status(400).json({ msg: 'No file uploaded' })
-//   }
-
-//   const file = req.files.file
-
-//   file.mv(`${__dirname}/../public/uploads/${file.name}`, err => {
-//     if (err) {
-//       console.error(err)
-//       return res.status(500).send(err)
-//     }
-//   })
-//   res.json({ fileName: file.name, filePath: `/uploads/${file.name}` })
-// })
-
-
-
-
 // ------------------ ERROR HANDLING ROUTES ------------------------- //
 app.use((req, res) => {
   res.status(404).json({ error: `Route ${req.originalUrl} does not exist` })
